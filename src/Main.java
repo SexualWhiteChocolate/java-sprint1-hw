@@ -2,9 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-        Converter converter = new Converter(0.75,0.05);
+        Converter converter = new Converter(0.00075,0.05);
         StepTracker tracker = new StepTracker();
 
         while (true) {
@@ -15,18 +14,39 @@ public class Main {
                 System.out.println("За какой месяц вы хотите внести правку? " +
                         "(нумерация месяцев идёт с нуля)");
                 int month = scanner.nextInt();
+                if (month < 0 || month > 11) {
+                    System.out.println("Месяц введён некорректно");
+                    continue;
+                }
                 System.out.println("За какой день? (нумерация стандартная)");
                 int day = scanner.nextInt();
+                if (day < 1 || day > 30) {
+                    System.out.println("День введён некорректно");
+                    continue;
+                }
                 System.out.println("Количество шагов:");
                 int steps = scanner.nextInt();
+                if (steps < 0) {
+                    System.out.println("Количество шагов введено некорректно");
+                    continue;
+                }
                 tracker.saveSteps(month, day, steps);
             } else if (command == 2) {
-                System.out.println("За какой месяц хотите получить статистику?");
+                System.out.println("За какой месяц хотите получить статистику? " +
+                        "(нумерация месяцев идёт с нуля)");
                 int month = scanner.nextInt();
+                if (month < 0 || month > 11) {
+                    System.out.println("Месяц введён некорректно");
+                    continue;
+                }
                 tracker.getStatistics(month, converter);
             } else if (command == 3) {
                 System.out.println("Какая теперь цель по шагам?");
                 int steps = scanner.nextInt();
+                if (steps < 0) {
+                    System.out.println("Количество шагов введено некорректно");
+                    continue;
+                }
                 tracker.setGoalSteps(steps);
             } else if (command == 0) {
                 System.out.println("Выход");

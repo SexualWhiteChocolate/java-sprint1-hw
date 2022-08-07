@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class StepTracker {
     int[] steps;
     int goalSteps;
@@ -8,13 +10,9 @@ public class StepTracker {
     }
 
     void saveSteps(int month, int day, int stepsQuantity) {
-        if (stepsQuantity >= 0) {
-            steps[month * 30 + day - 1] = stepsQuantity;
-            System.out.println("Готово! В " + day + "-й день " + month
-                    + "-го месяца вы " + "сделали " + stepsQuantity + " шагов");
-        } else {
-            System.out.println("Шагов не может быть меньше нуля! Попробуйте снова");
-        }
+        steps[month * 30 + day - 1] = stepsQuantity;
+        System.out.println("Готово! В " + day + "-й день " + month
+                + "-го месяца вы " + "сделали " + stepsQuantity + " шагов");
     }
 
     void getStatistics(int month, Converter converter) {
@@ -29,8 +27,10 @@ public class StepTracker {
         System.out.println("В среднем вы проходили " + (int) (findSum(month) / 30)
                 + " шагов в день");
         System.out.println("Пройденная дистанция за месяц - "
-                + converter.convert(findSum(month), 1) + " км");
-        System.out.println("Было сожжено " + converter.convert(findSum(month), 2)
+                + new DecimalFormat( "#.0" ).format(converter.convert(findSum(month), 1))
+                + " км");
+        System.out.println("Было сожжено " +
+                new DecimalFormat( "#.0" ).format(converter.convert(findSum(month), 2))
                 + " килокалорий");
         System.out.println("Лучшая серия - " + bestSeries(month) + " дней.");
     }
