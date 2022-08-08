@@ -21,7 +21,7 @@ public class StepTracker {
         for (int i = 0; i < daysIntoMonth - 1; i++) {
             System.out.print((i + 1) + " день: " + steps[month * daysIntoMonth + i] + ", ");
         }
-        System.out.println(daysIntoMonth + " день: " + steps[month * (daysIntoMonth + 1) - 1]);
+        System.out.println(daysIntoMonth + " день: " + steps[(month + 1) * daysIntoMonth - 1]);
         System.out.println("Всего вы сделали " + findSum(month) + " шагов за "
                 + month + "-й месяц. Так держать!");
         System.out.println("Наибольшее количество шагов за месяц - "
