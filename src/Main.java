@@ -2,9 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        int daysIntoMonth = 30;
         Scanner scanner = new Scanner(System.in);
         Converter converter = new Converter(0.00075,0.05);
-        StepTracker tracker = new StepTracker();
+        StepTracker tracker = new StepTracker(daysIntoMonth);
 
         while (true) {
             printMenu();
@@ -20,7 +21,7 @@ public class Main {
                 }
                 System.out.println("За какой день? (нумерация стандартная)");
                 int day = scanner.nextInt();
-                if (day < 1 || day > 30) {
+                if (day < 1 || day > daysIntoMonth) {
                     System.out.println("День введён некорректно");
                     continue;
                 }

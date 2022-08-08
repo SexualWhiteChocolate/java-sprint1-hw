@@ -7,11 +7,11 @@
         rateCalorie = calorie;
     }
 
-    double convert(int steps, int var) {
-        if (var == 1) {
-            return steps * rateStep;
-        } else {
-            return steps * rateCalorie;
-        }
+    double convertKm(int steps) {
+        return steps * rateStep;
     }
+
+     double convertCalories(int steps) {
+             return steps * rateCalorie;
+     }
 }
